@@ -15,22 +15,25 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/register")
-    public User register(@RequestBody User user) { return userService.saveUser(user); }
+    @PostMapping("/registerUser")
+    public User registerUser(@RequestBody User user) {return userService.saveUser(user); }
 
-    @GetMapping("/getAllUsers")
+    @PostMapping("/registerUsers")
+    public List<User> registerUsers(@RequestBody List<User> users) { return userService.saveUsers(users); }
+
+    @GetMapping("/findAllUsers")
     public List<User> findAllUser() { return userService.getUsers(); }
 
-    @GetMapping("/findUser/{email}")
+    @GetMapping("/findUser/email/{email}")
     public User findUserByEmail(@PathVariable String email) { return userService.getUserByEmail(email); }
 
-    @GetMapping("/findUser/{id}")
+    @GetMapping("/findUser/id/{id}")
     public User findUserById(@PathVariable int id) { return userService.getUserById(id); }
 
     @DeleteMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable int id) { return userService.deleteUserById(id); }
 
-    @PutMapping("/updateUser")
+    @PutMapping("/updateUser/{id}")
     public User updateUser(@RequestBody User user) { return userService.updateUser(user); }
 
 }

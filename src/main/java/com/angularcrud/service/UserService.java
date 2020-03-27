@@ -24,6 +24,8 @@ public class UserService {
     // POST
     public User saveUser(User user) { return userRepository.save(user); }
 
+    public List<User> saveUsers(List<User> users ) { return userRepository.saveAll(users); }
+
     // PUT
     public User updateUser(User user) {
         User userChange = userRepository.findById(user.getId()).orElse(null);
